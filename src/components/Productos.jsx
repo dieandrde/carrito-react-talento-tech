@@ -37,7 +37,7 @@ return (
             <div key={producto.id} className="card producto-card" style={width}>
                 <img src={producto.imagen} className="card-img-top" alt={producto.titulo} style={{ height: '200px', objectFit: 'cover' }}/>
                 <div className="card-body">
-                    <CardBody titulo={producto.titulo} precio={producto.precio} agregarAlCarrito={() => agregarAlCarrito(producto)}/>
+                    <ProductoDetalle titulo={producto.titulo} descripcion={producto.descripcion} precio={producto.precio} agregarAlCarrito={() => agregarAlCarrito(producto)}/>
                 </div>
             </div>
         ))}
@@ -45,12 +45,13 @@ return (
     );
 }
 
-export function CardBody(props) {
-    const { titulo, precio, agregarAlCarrito } = props;
+export function ProductoDetalle(props) {
+    const { titulo, descripcion, precio, agregarAlCarrito } = props;
     return (
     <>
-        <h5 className="card-title">{titulo}</h5>
-        <p className="card-text">${precio}</p>
+        <h4 className="card-title">{titulo}</h4>
+        <p className="card-text">{descripcion}</p>
+        <h5 className="card-title">${precio}</h5>
         <button className="btn btn-primary" onClick={agregarAlCarrito}>Agregar al carrito</button>
     </>
 );
