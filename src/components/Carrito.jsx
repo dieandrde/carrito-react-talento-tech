@@ -9,6 +9,7 @@ export default function Carrito({ carrito, eliminarDelCarrito }) {
             <p>No hay productos en el carrito.</p>
             ) : (
             <ul className="list-group">
+                
                 {carrito.map((producto, index) => (
                 <li key={index} className="list-group-item">
                     <strong>{producto.titulo}</strong> - ${producto.precio} <button className="btn btn-danger btn-sm" onClick={() => eliminarDelCarrito(producto.id)}>Eliminar</button>
