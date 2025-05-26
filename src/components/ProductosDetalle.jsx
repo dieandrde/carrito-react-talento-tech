@@ -184,24 +184,24 @@ export default function ProductoDetalle({ agregarAlCarrito }) {
 
                                 <p className="mb-1 fw-bold">Tarjetas de crédito</p>
                                 <div style={pageStyles.paymentIconsContainer}>
-                                    <img src="/public/images/visa.svg" style={pageStyles.paymentIcon} alt="Visa" />
-                                    <img src="/public/images/mastercard.svg" style={pageStyles.paymentIcon} alt="Mastercard" />
-                                    <img src="/public/images/american-express.svg" style={pageStyles.paymentIcon} alt="American Express" />
-                                    <img src="/public/images/naranja.svg" style={pageStyles.paymentIcon} alt="Naranja X" />
+                                    <img src="/images/payments/visa.svg" style={pageStyles.paymentIcon} alt="Visa" />
+                                    <img src="/images/payments/mastercard.svg" style={pageStyles.paymentIcon} alt="Mastercard" />
+                                    <img src="/images/payments/american-express.svg" style={pageStyles.paymentIcon} alt="American Express" />
+                                    <img src="/images/payments/naranja.svg" style={pageStyles.paymentIcon} alt="Naranja X" />
                                 </div>
 
                                 <p className="mb-1 mt-3 fw-bold">Tarjetas de débito</p>
                                 <div style={pageStyles.paymentIconsContainer}>
-                                    <img src="/public/images/visa-debito.svg" style={pageStyles.paymentIcon} alt="Visa Débito" />
-                                    <img src="/public/images/mastercard-debito.svg" style={pageStyles.paymentIcon} alt="Mastercard Débito" />
-                                    <img src="/public/images/maestro.svg" style={pageStyles.paymentIcon} alt="Maestro" />
-                                    <img src="/public/images/cabal.svg" style={pageStyles.paymentIcon} alt="Cabal" />
+                                    <img src="/images/payments/visa-debito.svg" style={pageStyles.paymentIcon} alt="Visa Débito" />
+                                    <img src="/images/payments/mastercard-debito.svg" style={pageStyles.paymentIcon} alt="Mastercard Débito" />
+                                    <img src="/images/payments/maestro.svg" style={pageStyles.paymentIcon} alt="Maestro" />
+                                    <img src="/images/payments/cabal.svg" style={pageStyles.paymentIcon} alt="Cabal" />
                                 </div>
 
                                 <p className="mb-1 mt-3 fw-bold">Efectivo</p>
                                 <div style={pageStyles.paymentIconsContainer}>
-                                    <img src="/public/images/pago-facil.svg" style={pageStyles.paymentIcon} alt="Pago Fácil" />
-                                    <img src="/public/images/rapipago.svg" style={pageStyles.paymentIcon} alt="Rapipago" />
+                                    <img src="/images/payments/pago-facil.svg" style={pageStyles.paymentIcon} alt="Pago Fácil" />
+                                    <img src="/images/payments/rapipago.svg" style={pageStyles.paymentIcon} alt="Rapipago" />
                                 </div>
                             </div>
                         </div>

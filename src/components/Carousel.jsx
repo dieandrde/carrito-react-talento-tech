@@ -8,13 +8,13 @@ export default function Carousel(){
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="/public/images/portada-1.png" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
+                            <img src="/images/banners/portada-1.png" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
                         </div>
                         <div className="carousel-item">
-                            <img src="/public/images/portada-2.jpg" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
+                            <img src="/images/banners/portada-2.jpg" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
                         </div>
                         <div className="carousel-item">
-                            <img src="/public/images/portada-3.jpg" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
+                            <img src="/images/banners/portada-3.jpg" className="d-block w-100" alt="..." style={{ maxHeight: '500px', objectFit: 'cover' }} />
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

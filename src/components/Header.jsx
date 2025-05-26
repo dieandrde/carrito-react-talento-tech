@@ -5,7 +5,7 @@ export default function Header({ carrito }) {
     <header>
       <nav className="navbar navbar-expand-lg bg-light w-100 shadow-sm">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/"><img src="public/images/tecno-diego.png" style={{width: '200px', marginRight: '350px',}}></img></Link>
+          <Link className="navbar-brand" to="/"><img src="/images/logos/tecno-diego.png" style={{width: '200px', marginRight: '350px',}}></img></Link>
           
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>

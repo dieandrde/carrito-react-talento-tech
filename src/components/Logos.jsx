@@ -36,21 +36,21 @@ export default function Logos() {
     return (
         <div style={containerStyles}>
             <div style={imageWrapperStyles}>
-                <img src="/public/images/envios.png" style={imageStyles} alt="Envíos a todo el país" />
+                <img src="/images/logos/envios.png" style={imageStyles} alt="Envíos a todo el país" />
             </div>
 
             <div style={imageWrapperStyles}>
-                <img src="/public/images/calidad.png" style={imageStyles} alt="Calidad garantizada" />
+                <img src="/images/logos/calidad.png" style={imageStyles} alt="Calidad garantizada" />
             </div>
 
 
             <div style={imageWrapperStyles}>
-                <img src="/public/images/pagos-online.png" style={imageStyles} alt="Pagos seguros online" />
+                <img src="/images/logos/pagos-online.png" style={imageStyles} alt="Pagos seguros online" />
 
             </div>
 
             <div style={imageWrapperStyles}>
-                <img src="/public/images/devoluciones.png" style={imageStyles} alt="Devoluciones sin cargo" />
+                <img src="/images/logos/devoluciones.png" style={imageStyles} alt="Devoluciones sin cargo" />
         
             </div>
         </div>

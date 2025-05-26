@@ -89,23 +89,23 @@ export default function Footer() {
                         <h5 style={columnTitleStyles}>Síguenos</h5>
                         <div className="d-flex mb-4">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                                <img src="/public/images/facebook.jpg" alt="Facebook" style={socialIconStyles} />
+                                <img src="/images/icons/facebook.jpg" alt="Facebook" style={socialIconStyles} />
                             </a>
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                                <img src="/public/images/instagram.png" alt="Instagram" style={socialIconStyles} />
+                                <img src="/images/icons/instagram.png" alt="Instagram" style={socialIconStyles} />
                             </a>
                             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                                <img src="/public/images/twitter.png" alt="Twitter/X" style={socialIconStyles} />
+                                <img src="/images/icons/twitter.png" alt="Twitter/X" style={socialIconStyles} />
                             </a>
                         </div>
                         <h5 style={columnTitleStyles}>Medios de Pago</h5>
                         <div className="d-flex flex-wrap gap-2">
-                            <img src="/public/images/visa.svg" alt="Visa" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
-                            <img src="/public/images/mastercard.svg" alt="Mastercard" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
-                            <img src="/public/images/american-express.svg" alt="American Express" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
-                            <img src="/public/images/naranja.svg" alt="Naranja X" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
-                            <img src="/public/images/pago-facil.svg" alt="Pago Fácil" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
-                            <img src="/public/images/rapipago.svg" alt="RapiPago" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/visa.svg" alt="Visa" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/mastercard.svg" alt="Mastercard" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/american-express.svg" alt="American Express" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/naranja.svg" alt="Naranja X" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/pago-facil.svg" alt="Pago Fácil" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
+                            <img src="/images/payments/rapipago.svg" alt="RapiPago" style={{ width: '40px', height: 'auto', border: '1px solid #ddd', borderRadius: '3px', padding: '2px' }} />
                         </div>
                     </div>
                 </div>
