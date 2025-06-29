@@ -15,6 +15,7 @@ import RutaProtegida from './components/RutaProtegida';
 import ProductoDetalle from './components/ProductosDetalle';
 import Logos from './components/Logos';
 import Footer from './components/Footer';
+import AgregarProducto from './components/AgregarProducto';
 
 
 
@@ -63,6 +64,7 @@ function App() {
                         
                         } />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/agregar" element={<RutaProtegida><AgregarProducto /></RutaProtegida>} />
                 </Routes>
             <Footer/>
         </Router>

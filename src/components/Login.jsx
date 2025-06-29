@@ -8,15 +8,17 @@ export default function Login() {
     const [password , setPassword] = useState('');
     const  { login } = useAuthContext(); // Obtén la función login del contexto
     const navigate = useNavigate();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (usuario === 'admin' && password === '1234') {
-            login(usuario); // Llama a la función login del contexto
+            login({ nombre: usuario, rol: 'admin' }); // Llama a la función login del contexto
             navigate('/carrito');
         }else{
-            alert('Credenciales incorrectas');
+            login({ nombre: usuario, rol: 'cliente' });
+            navigate('/');
         }
     };
 
