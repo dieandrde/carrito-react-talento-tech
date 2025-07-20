@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useCarrito } from './CarritoContext';
 
-export default function ProductoDetalle({ agregarAlCarrito }) {
+
+export default function ProductoDetalle() {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
+    const { agregarAlCarrito } = useCarrito();
+
     
 
     useEffect(() => {

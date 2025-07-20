@@ -1,15 +1,21 @@
 // RutaProtegida.jsx
 import { Navigate } from 'react-router-dom';
-import { useAuthContext } from './AuthContext'; // Importa el hook del contexto
+import { useAuthContext } from './AuthContext';
 
-export default function RutaProtegida({ children }){
-    const { user } = useAuthContext(); // Obtén el usuario del contexto
+export default function RutaProtegida({ children, allowedRoles }) {
+    const { user } = useAuthContext();
 
-    // Si no hay usuario, redirige a la página de login
-    if(!user) {
-        return <Navigate to="/login" replace/>
+    // si no hay usuario logueado, redirige a la página de login
+    if (!user) {
+        return <Navigate to="/login" replace />;
     }
 
-    // Si hay usuario, renderiza los hijos
+    if (allowedRoles && allowedRoles.length > 0) {
+        if (!user.rol || !allowedRoles.includes(user.rol)) {
+            toast.error('Acceso denegado. No tienes los permisos necesarios.');
+            return <Navigate to="/" replace />; // pagina de acceso denegado
+        }
+    }
+
     return children;
 }

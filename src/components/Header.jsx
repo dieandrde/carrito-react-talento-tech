@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useAuthContext } from './AuthContext';
+import { useCarrito } from './CarritoContext';
+import { FaShoppingCart, FaPlus, FaTools, FaSignInAlt, FaSignOutAlt, FaHome, FaInfoCircle, FaPhone, FaBox } from 'react-icons/fa';
 
 
-export default function Header({ carrito }) {
+export default function Header() {
   const { user, logout } = useAuthContext();
+  const { carrito } = useCarrito();
 
 
   return (
@@ -19,46 +22,53 @@ export default function Header({ carrito }) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
               <li className="nav-item">
-                <Link className="nav-link fw-semibold text-dark" to="/">INICIO</Link>
+                <Link className="nav-link fw-semibold text-dark" to="/">Inicio</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fw-semibold text-dark" to="/productos">PRODUCTOS</Link>
+                <Link className="nav-link fw-semibold text-dark" to="/productos">Productos</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fw-semibold text-dark" to="/about">SOBRE NOSOTROS</Link>
+                <Link className="nav-link fw-semibold text-dark" to="/about">Nosotros</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fw-semibold text-dark" to="/contact">CONTÁCTANOS</Link>
+                <Link className="nav-link fw-semibold text-dark" to="/contact">Contacto</Link>
               </li>
-              {!user && (
-                <li className="nav-item">
-                  <Link className='nav-link fw-semibold text-dark' to="/login">INICIAR SESIÓN</Link>
-                </li>
+              {/* si y solo si admin*/}
+              {user?.rol === 'admin' && (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link fw-semibold text-dark" to="/agregar">Agregar Producto</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link fw-semibold text-dark" to="/admin/productos"><FaTools className="me-1" /></Link>
+                  </li>
+                </>
               )}
-              <li className="nav-item">
-                <Link className="nav-link fw-semibold text-dark" to="/carrito">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-                  </svg>
-                  ({carrito.length})
+            </ul>
+            
+            <ul className="navbar-nav d-flex flex-row flex-wrap">
+              <li className="nav-item col-6 col-lg-auto">
+                <Link className="nav-link" to="/carrito" aria-label="Ver carrito de compras">
+                  <FaShoppingCart size={20} className="me-1" />
+                  <span>({carrito.length})</span>
                 </Link>
               </li>
-              {user?.rol === 'admin' && (
+              {!user ? ( // muestra inciar sesion solo si no se está logueado
                 <li className="nav-item">
-                  <Link className="nav-link" to="/agregar">AGREGAR PRODUCTO</Link>
+                    <Link className="nav-link fw-semibold text-dark" to="/login"><FaSignInAlt className="me-1" />Iniciar Sesión</Link>
                 </li>
+              ) : ( // cuando si se está logueado
+                <>
+                  
+                  <li className="nav-item">
+                      <span className="nav-link text-dark">Bienvenido, {user.nombre || 'Usuario'}</span>
+                  </li>
+                  <li className="nav-item">
+                      <button className="btn btn-link nav-link fw-semibold text-dark" onClick={logout}><FaSignOutAlt className="me-1" />Cerrar Sesión</button>
+                  </li>
+                </>
               )}
-              {user && (
-                <li className="nav-item">
-                  <button className="btn btn-link nav-link" onClick={logout}>Cerrar sesión</button>
-                </li>
-              )}
-
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Buscar productos y más" aria-label="Buscar" />
-              <button className="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
           </div>
         </div>
       </nav>

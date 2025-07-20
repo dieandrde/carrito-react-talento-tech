@@ -1,82 +1,75 @@
-// Login.jsx
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuthContext } from './AuthContext'; // Ajusta la ruta si es necesario
+import React, { useState } from 'react';
+import { useAuthContext } from './AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 export default function Login() {
-    const [usuario , setUsuario] = useState('');
-    const [password , setPassword] = useState('');
-    const  { login } = useAuthContext(); // Obtén la función login del contexto
-    const navigate = useNavigate();
-    
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const success = login(username, password);
+    if (success) {
+      navigate('/admin/productos');
+    }
+  };
 
-        if (usuario === 'admin' && password === '1234') {
-            login({ nombre: usuario, rol: 'admin' }); // Llama a la función login del contexto
-            navigate('/carrito');
-        }else{
-            login({ nombre: usuario, rol: 'cliente' });
-            navigate('/');
-        }
-    };
+  return (
+    <Container className="mt-5 pt-5 d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
+      <Row className="justify-content-center w-100">
+        <Col md={6} lg={4}>
+          <Card className="shadow p-4">
+            <Card.Body>
+              <Card.Title className="text-center mb-4"><h2>Iniciar Sesión</h2></Card.Title>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="username">
+                  <Form.Label>Nombre de usuario:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
+                <Form.Group className="mb-4" controlId="password">
+                  <Form.Label>Contraseña:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-    return (
-        <div className="container d-flex justify-content-center align-items-center min-vh-100">
-            <div className="card p-4 shadow" style={{ maxWidth: "400px", width: "100%" }}>
-                <h2 className="text-center mb-4">Iniciar Sesión</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label className="form-label">Usuario</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="usuario"
-                            placeholder=""
-                            required
-                            value={usuario}
-                            onChange={(e) => setUsuario(e.target.value)}
-                        />
-                    </div>
+                <Button variant="primary" type="submit" className="w-100">
+                  Iniciar Sesión
+                </Button>
+              </Form>
 
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Contraseña</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            placeholder="••••••••"
-                            required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="mb-3 form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="remember"
-                        />
-                        <label className="form-check-label" htmlFor="remember">Recordarme</label>
-                    </div>
-
-                    <button type="submit" className="btn btn-primary w-100">Ingresar</button>
-                </form>
-
-                <hr />
-
-                <div className="text-center">
-                    <p className="mb-1">
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                    </p>
-                    <p className="mb-0">
-                        ¿No tenés cuenta? <a href="#">Registrate</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    );
+              <div className="text-center mt-3">
+                <p className="mb-1">
+                  <Link to="/olvide-contrasena" className="text-decoration-none">
+                    ¿Olvidaste tu contraseña?
+                  </Link>
+                </p>
+                <p className="mb-0">
+                  <small className="text-muted">
+                    ¿No tienes un usuario?{' '}
+                    <Link to="/registrate" className="text-decoration-none">
+                      Regístrate
+                    </Link>
+                  </small>
+                </p>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
 }

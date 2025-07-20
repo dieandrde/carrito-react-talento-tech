@@ -1,26 +1,21 @@
 import { useState } from 'react';
-
+import { toast } from 'react-toastify'; //toast
 export default function AgregarProducto() {
   const [titulo, setTitulo] = useState('');
   const [precio, setPrecio] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [mensaje, setMensaje] = useState('');
+  // const [mensaje, setMensaje] = useState(''); //
   const [errores, setErrores] = useState({});
   const [imagen, setImagen] = useState('');
 
-  const validar = () => {
-    const nuevosErrores = {};
-    if (!titulo.trim()) nuevosErrores.titulo = 'El título es obligatorio';
-    if (!precio || isNaN(precio) || Number(precio) <= 0) nuevosErrores.precio = 'El precio debe ser mayor a 0';
-    if (!descripcion || descripcion.length < 10) nuevosErrores.descripcion = 'La descripción debe tener al menos 10 caracteres';
-    return nuevosErrores;
-  };
+  const validar = () => { };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const erroresDetectados = validar();
     if (Object.keys(erroresDetectados).length > 0) {
       setErrores(erroresDetectados);
+      toast.error('Por favor, corrige los errores del formulario.');
       return;
     }
 
@@ -33,22 +28,26 @@ export default function AgregarProducto() {
         body: JSON.stringify(nuevoProducto),
       });
 
-      if (!response.ok) throw new Error('Error al guardar el producto');
+      if (!response.ok) {
+        throw new Error('Error al guardar el producto.');
+      }
 
-      setMensaje('Producto agregado con éxito');
+      toast.success('Producto agregado con éxito');
       setTitulo('');
       setPrecio('');
       setDescripcion('');
+      setImagen('');
       setErrores({});
     } catch (error) {
-      setMensaje('Hubo un problema al enviar el producto.');
+      toast.error(error.message || 'Hubo un problema al enviar el producto.');
     }
   };
 
   return (
     <div className="container mt-5 pt-5">
       <h2>Agregar nuevo producto</h2>
-      {mensaje && <div className="alert alert-info">{mensaje}</div>}
+      {/* {mensaje && <div className="alert alert-info">{mensaje}</div>} */}
+      
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Título</label>
@@ -86,9 +85,7 @@ export default function AgregarProducto() {
             </div>
         )}
 
-
-
-        <button type="submit" className="btn btn-success">Agregar</button>
+        <button type="submit" className="btn btn-success mt-3">Agregar Producto</button>
       </form>
     </div>
   );

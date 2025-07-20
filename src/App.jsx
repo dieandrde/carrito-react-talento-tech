@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Solo BrowserRouter como Router
 import { AuthProvider } from './components/AuthContext';
 import Header from './components/Header';
 import Carousel from './components/Carousel';
@@ -16,59 +15,52 @@ import ProductoDetalle from './components/ProductosDetalle';
 import Logos from './components/Logos';
 import Footer from './components/Footer';
 import AgregarProducto from './components/AgregarProducto';
-
+import { CarritoProvider } from './components/CarritoContext';
+import { ProductoProvider } from './components/ProductoContext';
+import EditarEliminarProducto from './components/EditarEliminarProducto';
+import { ToastContainer } from 'react-toastify'; //  toastcontainer
+import 'react-toastify/dist/ReactToastify.css'; // estilos toastify
 
 
 function App() {
-    const [carrito, setCarrito] = useState([]);
-
-    const agregarAlCarrito = (producto) => {
-        setCarrito([...carrito, producto]);
-        alert(`Se agregó 1 unidad de ${producto.titulo}`)
-    };
-
-    const eliminarDelCarrito = (id) => {
-        const nuevoCarrito = carrito.filter(producto => producto.id !== id)
-        setCarrito(nuevoCarrito);
-    }
-
-    // const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    // const [carrito, setCarrito] = useState([]);
+    // const agregarAlCarrito = (producto) => { /* ... */ };
+    // const eliminarDelCarrito = (id) => { /* ... */ };
 
     return (
-    <AuthProvider>
-        <Router>
-                <Header carrito={carrito} />
-                <Routes>
-                    <Route path="/" element={
-                        <>
-                            <Carousel/>
-                            <Logos />
-                            <Productos agregarAlCarrito={agregarAlCarrito}  style={{backgroundColor: 'black',}}/>
-                        </>
-                    } />
-                    <Route path="/productos/" element={
-                        <>  
-                            <h2>Nuestros productos:</h2>
-                            <Productos agregarAlCarrito={agregarAlCarrito} /> 
-                        </>
-                    }/>
-                    <Route path="/productos/:id" element={<ProductoDetalle agregarAlCarrito={agregarAlCarrito}/>} />
-                    <Route path="/about" element={<About/>} />
-                    <Route path="/contact" element={<Contact/>} />
-                    <Route path="/carrito" element={
-                        <>
-                            <RutaProtegida><Carrito carrito={carrito} eliminarDelCarrito={eliminarDelCarrito} /> </RutaProtegida>
-                    
-                        </>
-                        
-                        } />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/agregar" element={<RutaProtegida><AgregarProducto /></RutaProtegida>} />
-                </Routes>
-            <Footer/>
-        </Router>
-    </AuthProvider>
+        <AuthProvider>
+            <CarritoProvider>
+                <ProductoProvider>
+                    <Router>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={
+                                <>
+                                    <Carousel/>
+                                    <Logos />
+                                    <Productos />
+                                </>
+                            } />
+                            <Route path="/productos/" element={
+                                <>
+                                    <Productos /> 
+                                </>
+                            }/>
+                            <Route path="/productos/:id" element={<ProductoDetalle />} />
+                            <Route path="/about" element={<About/>} />
+                            <Route path="/contact" element={<Contact/>} />
+                            <Route path="/carrito" element={<RutaProtegida><Carrito/> </RutaProtegida>} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/agregar" element={<RutaProtegida><AgregarProducto /></RutaProtegida>} />
+                            <Route path="/admin/productos" element={<RutaProtegida><EditarEliminarProducto /></RutaProtegida>} />
+                        </Routes>
+                        <Footer/>
+                    </Router>
+    
+                    <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+                </ProductoProvider>
+            </CarritoProvider>
+        </AuthProvider>
     );
 }
 
