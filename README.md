@@ -9,12 +9,16 @@ Este proyecto simula una tienda online con productos obtenidos desde una API ext
 
 - ✅ Listado de productos obtenidos desde MockAPI
 - ✅ Se puede agregar productos al carrito así como también eliminarlos
-- ✅ Login simulado (formulario + Context API) --> Usuario: admin , Contraseña: 1234
+- ✅ Sistema de autenticación de roles: ADMIN (contraseña: '1234' usuario:'admin') y USUARIO (contraseña: 'contraseña' usuario: 'usuario')
 - ✅ Rutas protegidas (/carrito) que requieren autenticación
 - ✅ Rutas dinámicas para ver detalles individuales de productos (/productos/:id)
 - ✅ Navegación con React Router
 - ✅ Estructura de layout completa: Header con links y buscador, main según ruta, footer fijo en todas las vistas
 - ✅ Manejo de errores y mensajes de carga al obtener productos
+- ✅ Panel de administración
+- ✅ Búsqueda y paginación
+- ✅ Notificaciones interactivas
+  
 
 ---
 
@@ -22,6 +26,9 @@ Este proyecto simula una tienda online con productos obtenidos desde una API ext
 
 - ⚛️ React + React Router DOM
 - Hooks (useState, useEffect, useContext, useParams)
+- React Context API
+- React Icons
+- React Toastify
 - 🌐 MockAPI para simular backend
 - 🎨 Combinación de CSS y Bootstrap para el diseño responsivo
 - 🔐 Context API para la autenticación
